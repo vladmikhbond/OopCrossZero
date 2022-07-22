@@ -12,10 +12,12 @@ namespace OopCrossZero
       public int Size { private set; get; }
 
       CellState[] cells;
+      int win;
 
-      public Field(int size)
+      public Field(int size, int win=5)
       {
          Size = size;
+         this.win = win;
          cells = new CellState[Size * Size];
          Array.Fill(cells, CellState.Empty);
       }
@@ -47,16 +49,14 @@ namespace OopCrossZero
 
       GameState getGameSate()
       {
-         int m = Size / 2;
-
          // vertical         
-         for (int r = 0; r < Size - m; r++)
+         for (int r = 0; r < Size - win; r++)
          {
             for (int c = 0; c < Size; c++)
             {
                bool crossFlag = true;
                bool zeroFlag = true;
-               for (int i = 0; i < m; i++)
+               for (int i = 0; i < win; i++)
                {
                   if (this[r + i, c] != CellState.Cross) crossFlag = false;
                   if (this[r + i, c] != CellState.Zero) zeroFlag = false;
@@ -65,12 +65,12 @@ namespace OopCrossZero
                if (zeroFlag) return GameState.ZeroWon;
             }
          }
-         // horisontal
-         // . . .
-         // diagonal
-         // . . .
-         // 2-nd diagonal
-         // . . .
+         // TODO: horisontal
+
+         // TODO: diagonal
+
+         // TODO: 2-nd diagonal
+
          return DrawOrContinue();
 
       }
