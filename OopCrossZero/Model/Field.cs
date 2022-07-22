@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace OopCrossZero.Model
 {
-   public enum CellState { Empty, Cross, Zero};
+   public enum CellState { Empty, Cross, Zero };
+
+   public enum GameState { Continue, CrossWon, ZeroWon, Draw, BadTurn };
 
    public class Field
    {
@@ -27,10 +29,10 @@ namespace OopCrossZero.Model
          get { return cells[r * Size + c]; }
       }
 
-      public CellState Turn(string turn, CellState mark)
+      public GameState Turn(string turn, CellState mark)
       {
          this[0, 0] = mark;
-         return CellState.Empty;
+         return GameState.Continue;
       }
 
    }
