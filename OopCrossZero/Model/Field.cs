@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OopCrossZero.Model
 {
-   public enum CellState { Empty = 0, Cross = 1, Zero = 10};
+   public enum CellState { Empty, Cross, Zero};
 
    public class Field
    {
