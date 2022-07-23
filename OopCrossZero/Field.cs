@@ -79,5 +79,7 @@ namespace OopCrossZero
       {
          return cells.All(c => c != CellState.Empty) ? GameState.Draw : GameState.Continue;
       }
+
+      
    }
 }

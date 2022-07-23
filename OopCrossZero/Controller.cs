@@ -3,20 +3,31 @@ namespace OopCrossZero
 {
    public class Controller
    {
-      public static void Run(Field model, View view)
+      Field field;
+      View view;
+
+      public Controller(Field field, View view)
       {
-         GameState gameState;
+         this.field = field;
+         this.view = view;
+      }
+
+      public void Run()
+      {         
          while (true)
          {
+            GameState gameState;
+
             view.Show();
             do
             {
                Console.Write("Cross turn > ");
                string turn = Console.ReadLine();
-               gameState = model.Turn(turn, CellState.Cross);
+               gameState = field.Turn(turn, CellState.Cross);
             } while (gameState == GameState.BadTurn);
             if (gameState != GameState.Continue)
             {
+               view.Show();
                Console.Write("Cross won!");
                break;
             }
@@ -26,16 +37,17 @@ namespace OopCrossZero
             {
                Console.Write("Zero turn > ");
                string turn = Console.ReadLine();
-               gameState = model.Turn(turn, CellState.Zero);
+               gameState = field.Turn(turn, CellState.Zero);
             } while (gameState == GameState.BadTurn);
             if (gameState != GameState.Continue)
             {
+               view.Show();
                Console.Write("Zero won!");
                break;
             }
          }
       }
 
-
+ 
    }
 }
