@@ -12,23 +12,33 @@ namespace OopCrossZero
       public int Size { private set; get; }
 
       CellState[] cells;
-      int win;
+      int winLen;
+      CellState nextTurn = CellState.Cross;
 
-      public Field(int size, int win=5)
+      public Field(int size, int winLen=5)
       {
          Size = size;
-         this.win = win;
+         this.winLen = winLen;
          cells = new CellState[Size * Size];
          Array.Fill(cells, CellState.Empty);
       }
 
       public CellState this[int r, int c]
       {
-         set { cells[r * Size + c] = value; }
+         private set { cells[r * Size + c] = value; }
          get { return cells[r * Size + c]; }
       }
 
-      public GameState Turn(string turn, CellState mark)
+      public GameState Turn(int r, int c)
+      {
+         if (r >= Size || c >= Size || this[r, c] != CellState.Empty)
+            return GameState.BadTurn;
+         this[r, c] = nextTurn;
+         nextTurn = nextTurn == CellState.Cross ? CellState.Zero : CellState.Cross;
+         return getGameSate();
+      }
+
+      public GameState Turn(string turn)
       {
          if (turn.Length < 2)
             return GameState.BadTurn;
@@ -36,10 +46,7 @@ namespace OopCrossZero
          {
             int r = Convert.ToInt32(turn[..1]);
             int c = Convert.ToInt32(turn[1..2]);
-            if (r >= Size || c >= Size || this[r, c] != CellState.Empty)
-               return GameState.BadTurn;
-            this[r, c] = mark;
-            return getGameSate();
+            return Turn(r, c);
          }
          catch (FormatException)
          {
@@ -50,13 +57,13 @@ namespace OopCrossZero
       GameState getGameSate()
       {
          // vertical         
-         for (int r = 0; r < Size - win; r++)
+         for (int r = 0; r < Size - winLen; r++)
          {
             for (int c = 0; c < Size; c++)
             {
                bool crossFlag = true;
                bool zeroFlag = true;
-               for (int i = 0; i < win; i++)
+               for (int i = 0; i < winLen; i++)
                {
                   if (this[r + i, c] != CellState.Cross) 
                      crossFlag = false;

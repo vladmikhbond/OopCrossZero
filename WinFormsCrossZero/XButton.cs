@@ -2,13 +2,13 @@
 {
    public class XButton : Button
    {
-      public string TurnCoords { get; private set; }
+      public int Row { get; private set; }
       public int Col { get; private set; }
-      
 
-      public XButton(string turnCoords)
+      public XButton(int r, int c)
       {
-         TurnCoords = turnCoords;
+         Row = r;
+         Col = c; 
       }
    }
 
