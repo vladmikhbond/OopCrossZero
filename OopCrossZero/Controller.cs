@@ -22,9 +22,11 @@ namespace OopCrossZero
             do
             {
                Console.Write("Cross turn > ");
-               string turn = Console.ReadLine();
-               gameState = field.Turn(turn, CellState.Cross);
-            } while (gameState == GameState.BadTurn);
+               string turnStr = Console.ReadLine();
+               gameState = field.Turn(turnStr, CellState.Cross);
+            } 
+            while (gameState == GameState.BadTurn);
+
             if (gameState != GameState.Continue)
             {
                view.Show();
@@ -36,9 +38,11 @@ namespace OopCrossZero
             do
             {
                Console.Write("Zero turn > ");
-               string turn = Console.ReadLine();
-               gameState = field.Turn(turn, CellState.Zero);
-            } while (gameState == GameState.BadTurn);
+               string turnStr = Console.ReadLine();
+               gameState = field.Turn(turnStr, CellState.Zero);
+            }
+            while (gameState == GameState.BadTurn);
+
             if (gameState != GameState.Continue)
             {
                view.Show();

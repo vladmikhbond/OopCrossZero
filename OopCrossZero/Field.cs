@@ -58,8 +58,10 @@ namespace OopCrossZero
                bool zeroFlag = true;
                for (int i = 0; i < win; i++)
                {
-                  if (this[r + i, c] != CellState.Cross) crossFlag = false;
-                  if (this[r + i, c] != CellState.Zero) zeroFlag = false;
+                  if (this[r + i, c] != CellState.Cross) 
+                     crossFlag = false;
+                  if (this[r + i, c] != CellState.Zero) 
+                     zeroFlag = false;
                }
                if (crossFlag) return GameState.CrossWon;
                if (zeroFlag) return GameState.ZeroWon;
