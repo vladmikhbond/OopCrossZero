@@ -4,31 +4,34 @@ namespace OopCrossZero
 {
    public class View
    {
-      Model field;
+      Model model;
 
-      public View(Model field)
+      public View(Model model)
       {
-         this.field = field;
+         this.model = model;
       }
 
       public void Show()
       {
          Console.Clear();
+
+         // Header
          Console.Write("  ");
-         for (int c = 0; c < field.Size; c++)
+         for (int c = 0; c < model.Size; c++)
          {
             Console.Write(" " + c);
          }
          Console.WriteLine();
 
-         for (int r = 0; r < field.Size; r++)
+         // Field
+         for (int r = 0; r < model.Size; r++)
          {
             Console.Write(" " + r);
-            for (int c = 0; c < field.Size; c++)
+            for (int c = 0; c < model.Size; c++)
             {
-               if (field[r, c] == CellState.Cross)
+               if (model[r, c] == CellState.Cross)
                   Console.Write(" X");
-               else if (field[r, c] == CellState.Zero)
+               else if (model[r, c] == CellState.Zero)
                   Console.Write(" O");
                else
                   Console.Write(" .");
