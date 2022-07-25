@@ -7,12 +7,12 @@ namespace WinFormsCrossZero
    {
       // cell size
       const int CS = 40;  
-      Field model;
+      Model model;
       Form owner;
       public XButton[,] xbuttons;
 
 
-      public View(Field model, Form owner)
+      public View(Model model, Form owner)
       {
          this.model = model;
          this.owner = owner;

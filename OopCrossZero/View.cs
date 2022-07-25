@@ -4,9 +4,9 @@ namespace OopCrossZero
 {
    public class View
    {
-      Field field;
+      Model field;
 
-      public View(Field field)
+      public View(Model field)
       {
          this.field = field;
       }

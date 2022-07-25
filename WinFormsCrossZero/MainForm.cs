@@ -8,12 +8,12 @@ namespace WinFormsCrossZero
 
    public partial class MainForm : Form
    {
-      Field model;
+      Model model;
 
       public MainForm()
       {
          InitializeComponent();
-         model = new Field(10);
+         model = new Model(10);
          new View(model, this);
       }
    }

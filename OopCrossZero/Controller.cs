@@ -3,10 +3,10 @@ namespace OopCrossZero
 {
    public class Controller
    {
-      Field field;
+      Model field;
       View view;
 
-      public Controller(Field field, View view)
+      public Controller(Model field, View view)
       {
          this.field = field;
          this.view = view;

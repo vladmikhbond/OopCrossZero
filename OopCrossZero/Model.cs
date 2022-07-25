@@ -7,7 +7,7 @@ namespace OopCrossZero
    public enum GameState { Continue, CrossWon, ZeroWon, Draw, BadTurn };
 
 
-   public class Field
+   public class Model
    {
       public int Size { private set; get; }
 
@@ -15,7 +15,7 @@ namespace OopCrossZero
       int winLen;
       CellState nextTurn = CellState.Cross;
 
-      public Field(int size, int winLen=5)
+      public Model(int size, int winLen=5)
       {
          Size = size;
          this.winLen = winLen;
