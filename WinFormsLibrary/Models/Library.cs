@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace WinFormsLibrary.Models
 {
@@ -10,6 +6,8 @@ namespace WinFormsLibrary.Models
    {
       List<Book> books = new List<Book>();
 
+      // Пошук за назвою, автором, роком видання, інв.номером
+      //
       public List<Book> Find (Book wanted)
       {
          var result = new List<Book>();
@@ -28,6 +26,8 @@ namespace WinFormsLibrary.Models
          return result; 
       }
 
+      // Додає книгу до списку книг. Ставить інв.номер.
+      //
       public void AddBook(Book book)
       {
          book.Id = UniqueId();
@@ -41,6 +41,8 @@ namespace WinFormsLibrary.Models
          return books.Select(x => x.Id).Max() + 1;
       }
 
+      // Наповнює список книг тестовими даними.
+      //
       public void FillWithTestData(int n)
       {
          books.Clear();
@@ -51,6 +53,8 @@ namespace WinFormsLibrary.Models
          }
       }
 
+      // Знаходить книгу по унікальному номеру
+      //
       public Book GetBookById(int id)
       {
          return books.SingleOrDefault(b => b.Id == id);

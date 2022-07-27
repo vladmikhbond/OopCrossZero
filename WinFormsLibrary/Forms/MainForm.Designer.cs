@@ -111,7 +111,6 @@
          this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
          this.booksToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
          this.booksToolStripMenuItem.Text = "Books";
-         this.booksToolStripMenuItem.Click += new System.EventHandler(this.booksToolStripMenuItem_Click);
          // 
          // newToolStripMenuItem
          // 
@@ -254,7 +253,6 @@
          this.booksGridView.RowTemplate.Height = 29;
          this.booksGridView.Size = new System.Drawing.Size(776, 255);
          this.booksGridView.TabIndex = 2;
-         this.booksGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
          // 
          // idDataGridViewTextBoxColumn
          // 

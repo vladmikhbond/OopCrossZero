@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
 using WinFormsLibrary.Models;
 
 namespace WinFormsLibrary.Forms
@@ -46,14 +38,10 @@ namespace WinFormsLibrary.Forms
             Id = id, Year = year
          };
         
-         var res = library.Find(wanted);
-         bookBindingSource.DataSource = res;
+         var books = library.Find(wanted);
+         bookBindingSource.DataSource = books;
       }
 
-        private void booksToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
       private void newToolStripMenuItem_Click(object sender, EventArgs e)
       {
@@ -65,10 +53,6 @@ namespace WinFormsLibrary.Forms
          }        
       }
 
-      private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-      {
-
-      }
 
       private void editToolStripMenuItem_Click(object sender, EventArgs e)
       {
