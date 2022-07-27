@@ -39,7 +39,8 @@ namespace WinFormsLibrary.Forms
          };
         
          var books = library.Find(wanted);
-         bookBindingSource.DataSource = books;
+         booksGridView.DataSource = books;   
+         //bookBindingSource.DataSource = books;
       }
 
 
@@ -56,6 +57,7 @@ namespace WinFormsLibrary.Forms
 
       private void editToolStripMenuItem_Click(object sender, EventArgs e)
       {
+         // Знаходимо вибрану книгу в результатах пошуку
          var book = bookBindingSource.Current as Book;
          if (book == null)
             return;
@@ -63,12 +65,22 @@ namespace WinFormsLibrary.Forms
          var bookForm = new BookForm(book);
          if (bookForm.ShowDialog() == DialogResult.OK)
          {
+            // в моделі за Id знаходимо книгу що редагується
             Book bookToChange = library.GetBookById(book.Id);
+
+            // копіюємо поля
             bookToChange.Title = book.Title;
             bookToChange.Author = book.Author;
             bookToChange.Year = book.Year;
+
+            // оновлюємо результати пошуку
             findButton_Click(null, null);
          }
+
+      }
+
+      private void booksGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+      {
 
       }
    }

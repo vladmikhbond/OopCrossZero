@@ -36,6 +36,7 @@
          this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.booksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.readersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -55,7 +56,6 @@
          this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
-         this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1.SuspendLayout();
          this.groupBox1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.booksGridView)).BeginInit();
@@ -119,6 +119,13 @@
          this.newToolStripMenuItem.Text = "New...";
          this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
          // 
+         // editToolStripMenuItem
+         // 
+         this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+         this.editToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
+         this.editToolStripMenuItem.Text = "Edit...";
+         this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+         // 
          // readersToolStripMenuItem
          // 
          this.readersToolStripMenuItem.Name = "readersToolStripMenuItem";
@@ -155,7 +162,7 @@
          this.clearButton.Location = new System.Drawing.Point(664, 95);
          this.clearButton.Name = "clearButton";
          this.clearButton.Size = new System.Drawing.Size(92, 34);
-         this.clearButton.TabIndex = 9;
+         this.clearButton.TabIndex = 6;
          this.clearButton.Text = "Clear";
          this.clearButton.UseVisualStyleBackColor = true;
          this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -165,7 +172,7 @@
          this.idBox.Location = new System.Drawing.Point(334, 98);
          this.idBox.Name = "idBox";
          this.idBox.Size = new System.Drawing.Size(211, 27);
-         this.idBox.TabIndex = 8;
+         this.idBox.TabIndex = 4;
          // 
          // label4
          // 
@@ -181,7 +188,7 @@
          this.yearBox.Location = new System.Drawing.Point(79, 98);
          this.yearBox.Name = "yearBox";
          this.yearBox.Size = new System.Drawing.Size(206, 27);
-         this.yearBox.TabIndex = 6;
+         this.yearBox.TabIndex = 3;
          // 
          // label3
          // 
@@ -197,7 +204,7 @@
          this.authorBox.Location = new System.Drawing.Point(79, 62);
          this.authorBox.Name = "authorBox";
          this.authorBox.Size = new System.Drawing.Size(677, 27);
-         this.authorBox.TabIndex = 4;
+         this.authorBox.TabIndex = 2;
          // 
          // label2
          // 
@@ -213,7 +220,7 @@
          this.titleBox.Location = new System.Drawing.Point(79, 29);
          this.titleBox.Name = "titleBox";
          this.titleBox.Size = new System.Drawing.Size(677, 27);
-         this.titleBox.TabIndex = 2;
+         this.titleBox.TabIndex = 1;
          // 
          // label1
          // 
@@ -229,7 +236,7 @@
          this.findButton.Location = new System.Drawing.Point(566, 95);
          this.findButton.Name = "findButton";
          this.findButton.Size = new System.Drawing.Size(92, 34);
-         this.findButton.TabIndex = 0;
+         this.findButton.TabIndex = 5;
          this.findButton.Text = "Find";
          this.findButton.UseVisualStyleBackColor = true;
          this.findButton.Click += new System.EventHandler(this.findButton_Click);
@@ -252,7 +259,8 @@
          this.booksGridView.RowHeadersWidth = 51;
          this.booksGridView.RowTemplate.Height = 29;
          this.booksGridView.Size = new System.Drawing.Size(776, 255);
-         this.booksGridView.TabIndex = 2;
+         this.booksGridView.TabIndex = 7;
+         this.booksGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksGridView_CellContentClick);
          // 
          // idDataGridViewTextBoxColumn
          // 
@@ -289,13 +297,6 @@
          // bookBindingSource
          // 
          this.bookBindingSource.DataSource = typeof(WinFormsLibrary.Models.Book);
-         // 
-         // editToolStripMenuItem
-         // 
-         this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-         this.editToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
-         this.editToolStripMenuItem.Text = "Edit...";
-         this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
          // 
          // MainForm
          // 

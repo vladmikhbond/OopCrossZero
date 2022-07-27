@@ -31,13 +31,13 @@
          this.components = new System.ComponentModel.Container();
          this.cancelButton = new System.Windows.Forms.Button();
          this.yearBox = new System.Windows.Forms.TextBox();
+         this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
          this.label3 = new System.Windows.Forms.Label();
          this.authorBox = new System.Windows.Forms.TextBox();
          this.label2 = new System.Windows.Forms.Label();
          this.titleBox = new System.Windows.Forms.TextBox();
          this.label1 = new System.Windows.Forms.Label();
          this.saveButton = new System.Windows.Forms.Button();
-         this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
          ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
          this.SuspendLayout();
          // 
@@ -47,7 +47,7 @@
          this.cancelButton.Location = new System.Drawing.Point(594, 80);
          this.cancelButton.Name = "cancelButton";
          this.cancelButton.Size = new System.Drawing.Size(92, 34);
-         this.cancelButton.TabIndex = 19;
+         this.cancelButton.TabIndex = 5;
          this.cancelButton.Text = "Cancel";
          this.cancelButton.UseVisualStyleBackColor = true;
          // 
@@ -57,7 +57,11 @@
          this.yearBox.Location = new System.Drawing.Point(74, 83);
          this.yearBox.Name = "yearBox";
          this.yearBox.Size = new System.Drawing.Size(175, 27);
-         this.yearBox.TabIndex = 16;
+         this.yearBox.TabIndex = 3;
+         // 
+         // bookBindingSource
+         // 
+         this.bookBindingSource.DataSource = typeof(WinFormsLibrary.Models.Book);
          // 
          // label3
          // 
@@ -74,7 +78,7 @@
          this.authorBox.Location = new System.Drawing.Point(74, 47);
          this.authorBox.Name = "authorBox";
          this.authorBox.Size = new System.Drawing.Size(614, 27);
-         this.authorBox.TabIndex = 14;
+         this.authorBox.TabIndex = 2;
          // 
          // label2
          // 
@@ -91,7 +95,7 @@
          this.titleBox.Location = new System.Drawing.Point(74, 12);
          this.titleBox.Name = "titleBox";
          this.titleBox.Size = new System.Drawing.Size(614, 27);
-         this.titleBox.TabIndex = 12;
+         this.titleBox.TabIndex = 1;
          // 
          // label1
          // 
@@ -108,14 +112,9 @@
          this.saveButton.Location = new System.Drawing.Point(496, 80);
          this.saveButton.Name = "saveButton";
          this.saveButton.Size = new System.Drawing.Size(92, 34);
-         this.saveButton.TabIndex = 10;
+         this.saveButton.TabIndex = 4;
          this.saveButton.Text = "Save";
          this.saveButton.UseVisualStyleBackColor = true;
-         this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-         // 
-         // bookBindingSource
-         // 
-         this.bookBindingSource.DataSource = typeof(WinFormsLibrary.Models.Book);
          // 
          // BookForm
          // 
