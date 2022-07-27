@@ -1,6 +1,5 @@
 ﻿using OopCrossZero;
 
-
 namespace WinFormsCrossZero
 {
    class View
@@ -16,11 +15,11 @@ namespace WinFormsCrossZero
       {
          this.model = model;
          this.owner = owner;
-         InitializeView();
+         Initialize();
       }
 
 
-      private void InitializeView()
+      private void Initialize()
       {
          xbuttons = new XButton[model.Size, model.Size];
 
@@ -37,7 +36,7 @@ namespace WinFormsCrossZero
                xb.Click += XButton_Click;
             }
          }
-         owner.ClientSize = new Size(model.Size * CS + 5, model.Size * CS + 5);
+         owner.ClientSize = new Size(model.Size * CS, model.Size * CS);
       }
 
 

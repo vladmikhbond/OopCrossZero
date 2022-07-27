@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OopCrossZero\OopCrossZero1.csproj" />
+    <ProjectReference Include="..\WinFormsCrossZero\WinFormsCrossZero.csproj" />
   </ItemGroup>
 
 </Project>
