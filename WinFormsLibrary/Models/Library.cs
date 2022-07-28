@@ -1,5 +1,8 @@
 ﻿
 
+using System.IO;
+using System.Text.Json;
+
 namespace WinFormsLibrary.Models
 {
    public class Library
@@ -59,5 +62,55 @@ namespace WinFormsLibrary.Models
       {
          return books.SingleOrDefault(b => b.Id == id);
       }
+
+      const string TEXT_FILE_DEFAULT = "books.txt";
+      const string JSON_FILE_DEFAULT = "books.txt";
+
+      // Зберігає книги у текстовому файлі
+      //      
+      public void SaveText(string path = TEXT_FILE_DEFAULT)
+      {
+         using (var writer = new StreamWriter(path))
+         {
+            foreach (var b in books)
+            {
+               writer.WriteLine(b.Id);
+               writer.WriteLine(b.Title);
+               writer.WriteLine(b.Author);
+               writer.WriteLine(b.Year);
+            }
+         }
+      }
+
+      // Завантажити книги з текстового файлу
+      //
+      public void LoadText(string path = TEXT_FILE_DEFAULT)
+      {
+         var lines = File.ReadAllLines(path); 
+         books.Clear();
+         for (var i = 0; i < lines.Length; i += 4)
+         {
+            var book = new Book() {
+               Id = Convert.ToInt32(lines[i]),
+               Title = lines[i + 1],
+               Author = lines[i + 2],
+               Year = Convert.ToInt32(lines[i + 3])
+            };
+            books.Add(book);  
+         }                
+      }
+
+      public void SaveJson(string path = JSON_FILE_DEFAULT)
+      {
+         string jsonString = JsonSerializer.Serialize(books);
+         File.WriteAllText(path, jsonString);
+      }
+
+      public void LoadJson(string path = JSON_FILE_DEFAULT)
+      {
+         string jsonString = File.ReadAllText(path);
+         books = JsonSerializer.Deserialize<List<Book>>(jsonString);        
+      }
+
    }
 }

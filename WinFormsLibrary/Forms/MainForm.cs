@@ -1,4 +1,5 @@
 ﻿
+using System.Text.Json;
 using WinFormsLibrary.Models;
 
 namespace WinFormsLibrary.Forms
@@ -80,6 +81,34 @@ namespace WinFormsLibrary.Forms
       }
 
       private void booksGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+      {
+
+      }
+
+      private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         library.SaveText();
+
+      }
+
+      private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+       
+      }
+
+      private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         try
+         {
+            library.LoadText();
+         } catch (Exception ex)
+         {
+            MessageBox.Show("Завантаження не відбулося \n" + ex.Message);
+         }
+            
+      }
+
+      private void fileToolStripMenuItem_Click(object sender, EventArgs e)
       {
 
       }
