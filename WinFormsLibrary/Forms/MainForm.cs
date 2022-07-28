@@ -6,16 +6,15 @@ namespace WinFormsLibrary.Forms
 {
    public partial class MainForm : Form
    {
-      Library library;
+      BookCollection model;
 
       public MainForm()
       {
          InitializeComponent();
-         library = new Library();
-         library.FillWithTestData(100);
+         model = new BookCollection();      
       }
 
-   
+
       private void clearButton_Click(object sender, EventArgs e)
       {
          titleBox.Text = "";
@@ -35,13 +34,13 @@ namespace WinFormsLibrary.Forms
          Book wanted = new Book
          {
             Title = titleBox.Text.Trim().ToLower(),
-            Author = authorBox.Text.Trim().ToLower(), 
-            Id = id, Year = year
+            Author = authorBox.Text.Trim().ToLower(),
+            Id = id,
+            Year = year
          };
-        
-         var books = library.Find(wanted);
-         booksGridView.DataSource = books;   
-         //bookBindingSource.DataSource = books;
+
+         var books = model.Find(wanted);
+         booksGridView.DataSource = books;        
       }
 
 
@@ -51,8 +50,8 @@ namespace WinFormsLibrary.Forms
          var bookForm = new BookForm(book);
          if (bookForm.ShowDialog() == DialogResult.OK)
          {
-            library.AddBook(book);
-         }        
+            model.AddBook(book);
+         }
       }
 
 
@@ -62,55 +61,51 @@ namespace WinFormsLibrary.Forms
          var book = bookBindingSource.Current as Book;
          if (book == null)
             return;
-      
+
          var bookForm = new BookForm(book);
          if (bookForm.ShowDialog() == DialogResult.OK)
          {
-            // в моделі за Id знаходимо книгу що редагується
-            Book bookToChange = library.GetBookById(book.Id);
-
-            // копіюємо поля
-            bookToChange.Title = book.Title;
-            bookToChange.Author = book.Author;
-            bookToChange.Year = book.Year;
-
+            model.ChangeBook(book);
             // оновлюємо результати пошуку
             findButton_Click(null, null);
          }
 
       }
 
-      private void booksGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-      {
+      #region menus
 
+      private void newToolStripMenuItem1_Click(object sender, EventArgs e)
+      {
+         model = new BookCollection();
+      }
+
+      private void openToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         if (openFileDialog1.ShowDialog() == DialogResult.OK)
+         {
+            try
+            {
+               model.LoadJson(openFileDialog1.FileName);
+            }
+            catch (Exception ex)
+            {
+               MessageBox.Show("Завантаження не відбулося \n" + ex.Message);
+            }
+         }
       }
 
       private void saveToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         library.SaveText();
-
+         model.SaveJson(model.FileName);
       }
 
-      private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+      private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
       {
-       
-      }
-
-      private void loadToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         try
+         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
          {
-            library.LoadText();
-         } catch (Exception ex)
-         {
-            MessageBox.Show("Завантаження не відбулося \n" + ex.Message);
+            model.SaveJson(saveFileDialog1.FileName);
          }
-            
       }
-
-      private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-
-      }
+      #endregion
    }
 }

@@ -31,8 +31,10 @@
          this.components = new System.ComponentModel.Container();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
          this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.booksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,8 +60,8 @@
          this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
-         this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+         this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+         this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
          this.menuStrip1.SuspendLayout();
          this.groupBox1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.booksGridView)).BeginInit();
@@ -92,7 +94,20 @@
          this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
          this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
          this.fileToolStripMenuItem.Text = "File";
-         this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+         // 
+         // newToolStripMenuItem1
+         // 
+         this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
+         this.newToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+         this.newToolStripMenuItem1.Text = "New";
+         this.newToolStripMenuItem1.Click += new System.EventHandler(this.newToolStripMenuItem1_Click);
+         // 
+         // openToolStripMenuItem
+         // 
+         this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+         this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+         this.openToolStripMenuItem.Text = "Open";
+         this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
          // 
          // saveToolStripMenuItem
          // 
@@ -101,12 +116,12 @@
          this.saveToolStripMenuItem.Text = "Save";
          this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
          // 
-         // openToolStripMenuItem
+         // saveAsToolStripMenuItem
          // 
-         this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-         this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-         this.openToolStripMenuItem.Text = "Open";
-         this.openToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+         this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+         this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+         this.saveAsToolStripMenuItem.Text = "Save As...";
+         this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
          // 
          // toolStripMenuItem1
          // 
@@ -161,7 +176,6 @@
          this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
          this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
          this.aboutToolStripMenuItem.Text = "About";
-         this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
          // 
          // groupBox1
          // 
@@ -285,7 +299,6 @@
          this.booksGridView.RowTemplate.Height = 29;
          this.booksGridView.Size = new System.Drawing.Size(776, 255);
          this.booksGridView.TabIndex = 7;
-         this.booksGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksGridView_CellContentClick);
          // 
          // idDataGridViewTextBoxColumn
          // 
@@ -323,17 +336,9 @@
          // 
          this.bookBindingSource.DataSource = typeof(WinFormsLibrary.Models.Book);
          // 
-         // saveAsToolStripMenuItem
+         // openFileDialog1
          // 
-         this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-         this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-         this.saveAsToolStripMenuItem.Text = "Save As...";
-         // 
-         // newToolStripMenuItem1
-         // 
-         this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-         this.newToolStripMenuItem1.Size = new System.Drawing.Size(152, 26);
-         this.newToolStripMenuItem1.Text = "New";
+         this.openFileDialog1.FileName = "openFileDialog1";
          // 
          // MainForm
          // 
@@ -390,5 +395,7 @@
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem saveAsToolStripMenuItem;
         private ToolStripMenuItem newToolStripMenuItem1;
-    }
+      private OpenFileDialog openFileDialog1;
+      private SaveFileDialog saveFileDialog1;
+   }
 }

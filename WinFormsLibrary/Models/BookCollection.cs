@@ -1,13 +1,22 @@
 ﻿
-
-using System.IO;
 using System.Text.Json;
 
 namespace WinFormsLibrary.Models
 {
-   public class Library
+   public class BookCollection
    {
       List<Book> books = new List<Book>();
+      public string FileName { set; get; }
+      public bool IsDirty { set; get; }
+
+      public BookCollection()
+      {
+         books = new List<Book>();
+         FileName = "books.json";
+         IsDirty = false;
+         // TODO: get out
+         FillWithTestData(100);
+      }
 
       // Пошук за назвою, автором, роком видання, інв.номером
       //
@@ -37,6 +46,22 @@ namespace WinFormsLibrary.Models
          books.Add(book);
       }
 
+      // Змінює книгу зі списку книг.
+      //
+      public bool ChangeBook(Book book)
+      {
+         for (int i = 0; i < books.Count; i++)
+         {
+            if (books[i].Id == book.Id)
+            {
+               books[i] = book;
+               IsDirty = true;
+               return true;
+            }
+         }
+         return false;
+      }
+
       int UniqueId()
       {
          if (books.Count == 0) 
@@ -56,19 +81,9 @@ namespace WinFormsLibrary.Models
          }
       }
 
-      // Знаходить книгу по унікальному номеру
-      //
-      public Book GetBookById(int id)
-      {
-         return books.SingleOrDefault(b => b.Id == id);
-      }
+      #region Save & Load
 
-      const string TEXT_FILE_DEFAULT = "books.txt";
-      const string JSON_FILE_DEFAULT = "books.txt";
-
-      // Зберігає книги у текстовому файлі
-      //      
-      public void SaveText(string path = TEXT_FILE_DEFAULT)
+      public void SaveText(string path)
       {
          using (var writer = new StreamWriter(path))
          {
@@ -82,9 +97,7 @@ namespace WinFormsLibrary.Models
          }
       }
 
-      // Завантажити книги з текстового файлу
-      //
-      public void LoadText(string path = TEXT_FILE_DEFAULT)
+      public void LoadText(string path)
       {
          var lines = File.ReadAllLines(path); 
          books.Clear();
@@ -100,17 +113,26 @@ namespace WinFormsLibrary.Models
          }                
       }
 
-      public void SaveJson(string path = JSON_FILE_DEFAULT)
+      // Зберігає книги у json-файлі
+      //      
+      public void SaveJson(string path)
       {
          string jsonString = JsonSerializer.Serialize(books);
          File.WriteAllText(path, jsonString);
+         IsDirty = false;
+         FileName = path;
       }
 
-      public void LoadJson(string path = JSON_FILE_DEFAULT)
+      // Завантажує книги з json-файлу
+      //
+      public void LoadJson(string path)
       {
          string jsonString = File.ReadAllText(path);
-         books = JsonSerializer.Deserialize<List<Book>>(jsonString);        
+         books = JsonSerializer.Deserialize<List<Book>>(jsonString);
+         IsDirty = false;
+         FileName = path;
       }
 
+      #endregion
    }
 }
