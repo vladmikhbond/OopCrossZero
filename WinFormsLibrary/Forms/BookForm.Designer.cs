@@ -38,6 +38,8 @@
          this.titleBox = new System.Windows.Forms.TextBox();
          this.label1 = new System.Windows.Forms.Label();
          this.saveButton = new System.Windows.Forms.Button();
+         this.titleStar = new System.Windows.Forms.Label();
+         this.yearStar = new System.Windows.Forms.Label();
          ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
          this.SuspendLayout();
          // 
@@ -58,6 +60,7 @@
          this.yearBox.Name = "yearBox";
          this.yearBox.Size = new System.Drawing.Size(175, 27);
          this.yearBox.TabIndex = 3;
+         this.yearBox.Validating += new System.ComponentModel.CancelEventHandler(this.yearBox_Validating);
          // 
          // bookBindingSource
          // 
@@ -94,8 +97,9 @@
          this.titleBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bookBindingSource, "Title", true));
          this.titleBox.Location = new System.Drawing.Point(74, 12);
          this.titleBox.Name = "titleBox";
-         this.titleBox.Size = new System.Drawing.Size(614, 27);
+         this.titleBox.Size = new System.Drawing.Size(612, 27);
          this.titleBox.TabIndex = 1;
+         this.titleBox.Validating += new System.ComponentModel.CancelEventHandler(this.titleBox_Validating);
          // 
          // label1
          // 
@@ -116,11 +120,36 @@
          this.saveButton.Text = "Save";
          this.saveButton.UseVisualStyleBackColor = true;
          // 
+         // titleStar
+         // 
+         this.titleStar.AutoSize = true;
+         this.titleStar.ForeColor = System.Drawing.Color.Red;
+         this.titleStar.Location = new System.Drawing.Point(692, 12);
+         this.titleStar.Name = "titleStar";
+         this.titleStar.Size = new System.Drawing.Size(15, 20);
+         this.titleStar.TabIndex = 16;
+         this.titleStar.Text = "*";
+         this.titleStar.Visible = false;
+         // 
+         // yearStar
+         // 
+         this.yearStar.AutoSize = true;
+         this.yearStar.ForeColor = System.Drawing.Color.Red;
+         this.yearStar.Location = new System.Drawing.Point(264, 87);
+         this.yearStar.Name = "yearStar";
+         this.yearStar.Size = new System.Drawing.Size(113, 20);
+         this.yearStar.TabIndex = 17;
+         this.yearStar.Text = "0 < year < 3000";
+         this.yearStar.Visible = false;
+         this.yearStar.Click += new System.EventHandler(this.yearStar_Click);
+         // 
          // BookForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(710, 129);
+         this.ClientSize = new System.Drawing.Size(741, 129);
+         this.Controls.Add(this.yearStar);
+         this.Controls.Add(this.titleStar);
          this.Controls.Add(this.cancelButton);
          this.Controls.Add(this.yearBox);
          this.Controls.Add(this.label3);
@@ -148,5 +177,7 @@
         private Label label1;
         private Button saveButton;
       private BindingSource bookBindingSource;
-   }
+        private Label titleStar;
+        private Label yearStar;
+    }
 }
