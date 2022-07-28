@@ -141,7 +141,6 @@
          this.yearStar.TabIndex = 17;
          this.yearStar.Text = "0 < year < 3000";
          this.yearStar.Visible = false;
-         this.yearStar.Click += new System.EventHandler(this.yearStar_Click);
          // 
          // BookForm
          // 

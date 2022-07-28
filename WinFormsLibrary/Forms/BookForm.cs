@@ -41,9 +41,7 @@ namespace WinFormsLibrary.Forms
          }
       }
 
-      private void yearStar_Click(object sender, EventArgs e)
-      {
+    
 
-      }
-   }
+     }
 }

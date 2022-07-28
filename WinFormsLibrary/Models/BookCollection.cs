@@ -44,6 +44,7 @@ namespace WinFormsLibrary.Models
       {
          book.Id = UniqueId();
          books.Add(book);
+         IsDirty = true;
       }
 
       // Змінює книгу зі списку книг.
