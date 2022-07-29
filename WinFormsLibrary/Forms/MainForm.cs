@@ -40,7 +40,7 @@ namespace WinFormsLibrary.Forms
          };
 
          var books = model.Find(wanted);
-         booksGridView.DataSource = books;        
+         bookBindingSource.DataSource = books;        
       }
 
 
@@ -51,6 +51,8 @@ namespace WinFormsLibrary.Forms
          if (bookForm.ShowDialog() == DialogResult.OK)
          {
             model.AddBook(book);
+            // оновлюємо результати пошуку
+            findButton_Click(null, null);
          }
       }
 
@@ -106,7 +108,33 @@ namespace WinFormsLibrary.Forms
             model.SaveJson(saveFileDialog1.FileName);
          }
       }
+
+      private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         Close();
+      }
       #endregion
 
+      private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+      {
+         if (!model.IsDirty) return;
+
+         switch (MessageBox.Show("Do you want to save changes to " + model.FileName, "", MessageBoxButtons.YesNoCancel))
+         {
+            case DialogResult.Yes:
+               model.SaveJson(model.FileName);
+               break;
+            case DialogResult.No:
+               break;
+            case DialogResult.Cancel:
+               e.Cancel = true;
+               break;
+         }
+      }
+
+      private void testDataToolStripMenuItem_Click(object sender, EventArgs e)
+      {    
+         model.FillWithTestData(100);
+      }
    }
 }

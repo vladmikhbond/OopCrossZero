@@ -14,8 +14,6 @@ namespace WinFormsLibrary.Models
          books = new List<Book>();
          FileName = "books.json";
          IsDirty = false;
-         // TODO: get out
-         FillWithTestData(100);
       }
 
       // Пошук за назвою, автором, роком видання, інв.номером
