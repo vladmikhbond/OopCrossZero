@@ -117,8 +117,8 @@ namespace WinFormsLibrary.Forms
 
       private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
       {
-         if (!model.IsDirty) return;
-
+         if (!model.IsDirty) 
+            return;
          switch (MessageBox.Show("Do you want to save changes to " + model.FileName, "", MessageBoxButtons.YesNoCancel))
          {
             case DialogResult.Yes:
