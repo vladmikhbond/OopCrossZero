@@ -63,9 +63,10 @@ namespace WinFormsLibrary.Models
 
       int UniqueId()
       {
-         if (books.Count == 0) 
-            return 1;
-         return books.Select(x => x.Id).Max() + 1;
+         int max = 0;
+         foreach (var b in books)
+            if (max < b.Id) max = b.Id;
+         return max + 1;
       }
 
       // Наповнює список книг тестовими даними.
